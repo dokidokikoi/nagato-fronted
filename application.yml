@@ -1,0 +1,6 @@
+sqlite:
+  db: conf.db
+
+download:
+  path: nagato/download
+  cache: nagato/temp

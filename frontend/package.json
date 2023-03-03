@@ -9,10 +9,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "vue": "^3.2.37"
+    "@kangc/v-md-editor": "^2.3.15",
+    "element-plus": "^2.2.27",
+    "markdown-it": "^13.0.1",
+    "vite-plugin-prismjs": "^0.0.8",
+    "vite-svg-loader": "^4.0.0",
+    "vue": "^3.2.37",
+    "vue3-aplayer": "^1.7.3"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^3.0.3",
-    "vite": "^3.0.7"
+    "vite": "^3.0.7",
+    "vite-plugin-svg-icons": "^2.0.1"
   }
 }
