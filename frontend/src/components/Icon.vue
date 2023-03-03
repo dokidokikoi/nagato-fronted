@@ -19,8 +19,8 @@ const icon = defineAsyncComponent(() =>
 
 <style scoped>
 .fill-current {
-  width: 23px;
-  height: 23px;
+  width: 18px;
+  height: 18px;
   display: flex;
   justify-content: center;
   color: blue;

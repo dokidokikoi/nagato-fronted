@@ -36,3 +36,11 @@ body {
 .btn:focus {
     color: blue;
 }
+
+.icon-btn {
+    padding: 0 10px;
+}
+
+.icon-btn:hover {
+    cursor: pointer;
+}

@@ -4,7 +4,9 @@
       <Header />
     </el-header>
     <el-container>
-      <el-aside width="200px" class="aside">Aside</el-aside>
+      <el-aside width="200px" class="aside">
+        <Aside />
+      </el-aside>
       <el-main class="main">Main</el-main>
     </el-container>
   </el-container>
@@ -13,6 +15,7 @@
 
 <script setup>
 import Header from "./header/index.vue"
+import Aside from "./aside/index.vue"
 </script>
 
 

@@ -3,16 +3,22 @@
     <h1>nagato</h1>
     <div class="btn-set">
       <div class="text-btn">
-        <el-input
-          v-model="input1"
-          size="small"
-          placeholder="搜索"
-          :prefix-icon="Search"
-          class="search"
-        />
-        <el-button class="btn" link @click.stop>下载</el-button>
-        <el-button class="btn" link @click.stop>上传</el-button>
+        <div class="search">
+          <el-input
+            class="search_inner"
+            v-model="search"
+            size="small"
+            width="3000"
+            placeholder="搜索"
+            :prefix-icon="Search"
+          />
+        </div>
+        <!-- <el-button class="btn" link @click.stop>下载</el-button> -->
+        <!-- <el-button class="btn" link @click.stop>上传</el-button> -->
+        
       </div>
+      <Icon name="circle-download" class="icon-btn"/>
+      <Icon name="cloud-upload" class="icon-btn"/>
       <Icon name="setting" class="icon-btn"/>
     </div>
   </div>
@@ -22,6 +28,9 @@
 <script setup>
 import Icon from "../../../components/Icon.vue"
 import { Search } from '@element-plus/icons-vue'
+import { ref } from "vue";
+
+let search = ref("")
 </script>
 
 
@@ -39,22 +48,21 @@ import { Search } from '@element-plus/icons-vue'
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
 }
 
 .text-btn {
-  width: 40%;
-  padding: 0 23px;
+  padding: 0 20px;
   display: flex;
   flex-direction: row;
   justify-content: center;
 }
 
-.icon-btn:hover {
-  cursor: pointer;
+.search {
+  /* padding: 0 10px 0 20px;  */
 }
 
-/* .search ::v-deep .el-input__wrapper {
-  background-clip: padding-box;
-  background-color: blue;
-} */
+.search_inner {
+  width: 150px;
+}
 </style>
