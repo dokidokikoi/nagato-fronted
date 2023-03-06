@@ -1,12 +1,13 @@
 <template>
   <v-md-editor 
+  class="editer"
   :disabled-menus="[]" 
   v-model="text" 
-  height="400px" 
   @upload-image="handleUploadImage"
   @save="saveText"
   @image-click="imageFocus"
   tab-size="4"
+  height="500px"
   :include-level="[1, 2, 3,4]"
   ></v-md-editor>
   <el-dialog v-model="dialogImageVisible" center>
@@ -63,5 +64,8 @@ function imageFocus(images, currentIndex) {
 
 
 <style scoped>
-
+.editer {
+  /* height: 500px; */
+  /* overflow: auto; */
+}
 </style>

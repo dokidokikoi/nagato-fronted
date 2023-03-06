@@ -7,7 +7,10 @@
       <el-aside width="200px" class="aside">
         <Aside />
       </el-aside>
-      <el-main class="main">Main</el-main>
+      <el-main class="main">
+        <!-- <FolderTree /> -->
+        <BlankEdit />
+      </el-main>
     </el-container>
   </el-container>
 </template>
@@ -16,6 +19,8 @@
 <script setup>
 import Header from "./header/index.vue"
 import Aside from "./aside/index.vue"
+import FolderTree from "../foldertree/index.vue"
+import BlankEdit from "../blank/edit/index.vue"
 </script>
 
 
@@ -33,6 +38,11 @@ import Aside from "./aside/index.vue"
 }
 
 .main {
+  height: calc(100vh - 50px) !important;
   background-color: rgb(28, 28, 28);
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  padding: 0 !important;
 }
 </style>
