@@ -1,5 +1,5 @@
 <template>
-  <MainHeader />
+  <!-- <MainHeader /> -->
   <!-- <ul v-infinite-scroll="load" class="data-panel infinite-list" style="overflow: auto">
     <div class="folder-header">
       <el-checkbox

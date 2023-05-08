@@ -7,7 +7,6 @@
   @save="saveText"
   @image-click="imageFocus"
   tab-size="4"
-  height="500px"
   :include-level="[1, 2, 3,4]"
   ></v-md-editor>
   <el-dialog v-model="dialogImageVisible" center>
@@ -21,6 +20,7 @@
 
 <script setup>
 import { ref } from "vue"
+const emit = defineEmits(['saveEvent'])
 
 let text = ref(
 '## test \n' +
@@ -50,8 +50,10 @@ function handleUploadImage(event, insertImage, files) {
 }
 
 function saveText() {
-  localStorage.setItem('edit', text.value)
-  console.log(localStorage.getItem('edit'))
+  // localStorage.setItem('edit', text.value)
+  // console.log(localStorage.getItem('edit'))
+  emit('saveEvent')
+  console.log("hi")
 }
 
 function imageFocus(images, currentIndex) {
@@ -65,7 +67,7 @@ function imageFocus(images, currentIndex) {
 
 <style scoped>
 .editer {
-  /* height: 500px; */
+  height: 900px;
   /* overflow: auto; */
 }
 </style>

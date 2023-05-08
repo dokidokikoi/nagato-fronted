@@ -8,8 +8,8 @@
         <Aside />
       </el-aside>
       <el-main class="main">
-        <!-- <FolderTree /> -->
-        <BlankEdit />
+        <MainHeader />
+        <router-view/>
       </el-main>
     </el-container>
   </el-container>
@@ -19,8 +19,7 @@
 <script setup>
 import Header from "./header/index.vue"
 import Aside from "./aside/index.vue"
-import FolderTree from "../foldertree/index.vue"
-import BlankEdit from "../blank/edit/index.vue"
+import MainHeader from "../../components/MainHeader.vue"
 </script>
 
 

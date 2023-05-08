@@ -19,6 +19,7 @@
       </div>
       <Icon name="circle-download" class="icon-btn"/>
       <Icon name="cloud-upload" class="icon-btn"/>
+      <Icon name="refresh" class="icon-btn"/>
       <Icon name="setting" class="icon-btn"/>
     </div>
   </div>

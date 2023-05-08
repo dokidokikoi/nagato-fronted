@@ -48,7 +48,7 @@ body {
 .data-panel {
     height: calc(100% - 50px) !important;
     padding: 0;
-    margin-top: 50px;
+    /* margin-top: 50px; */
     list-style: none;
     box-sizing: border-box;
     overflow-y: hidden;

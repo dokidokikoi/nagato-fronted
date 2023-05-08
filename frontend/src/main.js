@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import './style.css'
 import App from './App.vue'
+import router from './router/router'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 import VMdEditor from '@kangc/v-md-editor/lib/codemirror-editor';
@@ -47,6 +48,9 @@ import 'prismjs/components/prism-json';
 import createTodoListPlugin from '@kangc/v-md-editor/lib/plugins/todo-list/index';
 import '@kangc/v-md-editor/lib/plugins/todo-list/todo-list.css';
 
+// import VueVideoPlayer from '@videojs-player/vue'
+// import 'video.js/dist/video-js.css'
+
 VMdEditor.Codemirror = Codemirror;
 VMdEditor.use(vuepressTheme, {
   Prism,
@@ -73,4 +77,6 @@ createApp(App)
 .use(ElementPlus)
 .use(VMdEditor)
 .use(VMdPreview)
+.use(router)
+// .use(VueVideoPlayer)
 .mount('#app')

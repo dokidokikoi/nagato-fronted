@@ -11,9 +11,9 @@
     </div>
     <div>
       <div class="btn-group">
-        <el-button color="w" :icon="FolderAdd" size="small" link>新建文件夹</el-button>
-        <el-button color="w" :icon="DocumentAdd" size="small" link>新建Blank</el-button>
-        <el-button color="w" :icon="Download" size="small" link>离线下载</el-button>
+        <el-button color="w" :icon="FolderAdd" size="small" link @click="toRoute('/blank/edit')">新建文件夹</el-button>
+        <el-button color="w" :icon="DocumentAdd" size="small" link @click="toRoute('/blank/edit')">新建Blank</el-button>
+        <el-button color="w" :icon="Download" size="small" link @click="toRoute('/blank/edit')">离线下载</el-button>
       </div>
     </div>
   </div>
@@ -22,14 +22,16 @@
 
 <script setup>
 import { DocumentAdd, FolderAdd, Download } from '@element-plus/icons-vue'
+import router from '@/router/router.js';
+
+function toRoute(path) {
+  router.push({path: path})
+}
 </script>
 
 
 <style scoped>
 .main-header {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 50px;
   background-color: rgb(24, 24, 24);

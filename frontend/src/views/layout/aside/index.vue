@@ -14,15 +14,15 @@
       text-color="aliceblue"
       router
       >
-        <el-menu-item index="1">
+        <el-menu-item index="/">
           <el-icon><folder /></el-icon>
           <span>我的资源</span>
         </el-menu-item>
-        <el-menu-item index="2">
+        <el-menu-item index="/blank">
           <el-icon><reading /></el-icon>
           <span>Blank</span>
         </el-menu-item>
-        <el-menu-item index="3">
+        <el-menu-item index="/">
           <el-icon><Picture /></el-icon>
           <span>相册</span>
         </el-menu-item>
