@@ -11,21 +11,38 @@
     </div>
     <div>
       <div class="btn-group">
-        <el-button color="w" :icon="FolderAdd" size="small" link @click="toRoute('/blank/edit')">新建文件夹</el-button>
+        <el-button type="primary" :icon="Upload" size="small" round @click="showUploadDailog()">上传文件</el-button>
+        <el-button color="w" :icon="FolderAdd" size="small" link @click="showDirDailog()">新建文件夹</el-button>
         <el-button color="w" :icon="DocumentAdd" size="small" link @click="toRoute('/blank/edit')">新建Blank</el-button>
         <el-button color="w" :icon="Download" size="small" link @click="toRoute('/blank/edit')">离线下载</el-button>
       </div>
     </div>
   </div>
+  <DirDialog ref="dirDialogRef" />
+  <FileDialog ref="fileDialogRef" />
 </template>
 
 
 <script setup>
-import { DocumentAdd, FolderAdd, Download } from '@element-plus/icons-vue'
+import DirDialog from '@/views/upload/dir/index.vue'
+import FileDialog from '@/views/upload/file/index.vue'
+import { DocumentAdd, FolderAdd, Download, Upload } from '@element-plus/icons-vue'
 import router from '@/router/router.js';
+import { ref } from 'vue';
+
+const dirDialogRef = ref(null)
+const fileDialogRef = ref(null)
 
 function toRoute(path) {
   router.push({path: path})
+}
+
+function showDirDailog() {
+  dirDialogRef.value.showDialog()
+}
+
+function showUploadDailog() {
+  fileDialogRef.value.showDialog()
 }
 </script>
 

@@ -17,21 +17,35 @@
         <!-- <el-button class="btn" link @click.stop>上传</el-button> -->
         
       </div>
-      <Icon name="circle-download" class="icon-btn"/>
-      <Icon name="cloud-upload" class="icon-btn"/>
+      <Icon name="circle-download" @click="toRoute('/downloads')" class="icon-btn"/>
+      <Icon name="cloud-upload" @click="toRoute('/uploads')" class="icon-btn"/>
       <Icon name="refresh" class="icon-btn"/>
-      <Icon name="setting" class="icon-btn"/>
+      <Icon name="setting" @click="showSetting()" class="icon-btn"/>
     </div>
   </div>
+
+  <Setting ref="settingRef" :setting-visable="settingVisable" />
 </template>
 
 
 <script setup>
 import Icon from "../../../components/Icon.vue"
+import Setting from "../../setting/index.vue"
+import router from '@/router/router.js';
 import { Search } from '@element-plus/icons-vue'
 import { ref } from "vue";
 
 let search = ref("")
+const settingRef = ref(null);
+
+function showSetting() {
+  console.log(settingRef.value)
+  settingRef.value.showSetting()
+}
+
+function toRoute(path) {
+  router.push({path: path})
+}
 </script>
 
 

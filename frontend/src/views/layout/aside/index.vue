@@ -26,11 +26,11 @@
           <el-icon><Picture /></el-icon>
           <span>相册</span>
         </el-menu-item>
-        <el-menu-item index="4">
+        <el-menu-item index="/history">
           <Icon name="history" style="padding: 0 7px 0 3px;"/>
           <span>历史</span>
         </el-menu-item>
-        <el-menu-item index="5">
+        <el-menu-item index="/share">
           <el-icon><Share /></el-icon>
           <span>分享</span>
         </el-menu-item>
