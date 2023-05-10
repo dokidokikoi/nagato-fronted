@@ -9,6 +9,7 @@ const downloads = () => import(/* webpackChunkName: 'wel' */'@/views/download/in
 const uploads = () => import(/* webpackChunkName: 'wel' */'@/views/upload/index.vue')
 const history = () => import(/* webpackChunkName: 'wel' */'@/views/history/index.vue')
 const share = () => import(/* webpackChunkName: 'wel' */'@/views/share/index.vue')
+const me = () => import(/* webpackChunkName: 'wel' */'@/views/me/index.vue')
 
 // Vue.use(VueRouter)
 
@@ -30,7 +31,7 @@ const routes = [
     component: blankedit,
   },
   {
-    path: '/blank/view',
+    path: '/blank/view/:id',
     name: 'blankview',
     component: blankview,
   },
@@ -53,6 +54,11 @@ const routes = [
     path: '/share',
     name: 'share',
     component: share,
+  },
+  {
+    path: '/me',
+    name: 'me',
+    component: me,
   },
 ]
 

@@ -1,5 +1,5 @@
 <template>
-  <h1>Uploads</h1>
+  <h1>Me</h1>
 </template>
 
 

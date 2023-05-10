@@ -1,23 +1,4 @@
 <template>
-  <!-- <MainHeader /> -->
-  <!-- <ul v-infinite-scroll="load" class="data-panel infinite-list" style="overflow: auto">
-    <div class="folder-header">
-      <el-checkbox
-        v-model="checkAll"
-        :indeterminate="isIndeterminate"
-        @change="handleCheckAllChange"
-        style="width: 100px;"
-        >文件名</el-checkbox
-      >
-      <span>修改时间</span>
-      <span style="width: 100px;">大小</span>
-    </div>
-    <li v-for="i in count" :key="i" class="infinite-list-item">
-      <el-checkbox :label="i">
-        {{ i }}
-      </el-checkbox>
-    </li>
-  </ul> -->
   <div class="data-panel">
     <el-table
     ref="multipleTableRef"
@@ -26,11 +7,23 @@
     :scroll-load="load"
     infinite-scroll-distance="100"
     class="folder-panel"
+    v-if="!loading"
   >
-    <el-table-column type="selection" width="55" />
-    <el-table-column label="文件名" prop="name" show-overflow-tooltip />
-    <el-table-column prop="date" label="修改日期" sortable show-overflow-tooltip />
-    <el-table-column prop="size" label="大小" show-overflow-tooltip  width="120"/>
+    <el-table-column type="selection" width="30" />
+    <el-table-column label="文件名" prop="name" show-overflow-tooltip >
+      <template #default="scope">
+        <div style="display: flex; flex-direction: row ; align-items: center;">
+          <FileIcon :type="scope.row.dir ? 'dir':scope.row.ext"/>
+          <a  style="font-size: 1.1em; padding: 3px;" @click="getFolderChildren(scope.row.uuid)">{{ scope.row.name }}</a>
+        </div>
+      </template>
+    </el-table-column>
+    <el-table-column prop="created_at" label="修改日期" sortable show-overflow-tooltip />
+    <el-table-column prop="size" label="大小" show-overflow-tooltip  width="120">
+      <template #default="scope">
+        {{ scope.row.dir ? "-":scope.row.size }}
+      </template>
+    </el-table-column>
     <el-table-column label="操作">
       <template #default="scope">
       
@@ -42,36 +35,31 @@
 
 
 <script setup>
-import MainHeader from "../../components/MainHeader.vue"
+import FileIcon from "./icon/index.vue"
 import { ref } from 'vue'
+import { GetFolderChildren } from '@@/go/main/App'
+import { ElNotification } from "element-plus"
 
-const load = () => {
-  // if (count.value < 15) {
-  //   count.value += 1
-  // }
-  if (tableData.value.length < 30) {
-    tableData.value.push({
-      date: '2016-05-03',
-      name: 'Tom',
-      address: 'No. 189, Grove St, Los Angeles',
-    })
-    console.log("#")
-  }
-  console.log("#")
+const tableData = ref(null)
+const loading = ref(true)
+
+function getFolderChildren(uid) {
+  loading.value = true
+  GetFolderChildren(uid).then(res => {
+    if (res.code !== 200) {
+        ElNotification({
+            title: res.msg,
+            type: "error"
+        })
+        loading.value = false
+        return
+    }
+    tableData.value = res.data.children
+    loading.value = false
+  })
 }
 
-const tableData = ref([
-  {
-    name: 'video',
-    date: '2023-02-23 12:34:22',
-    size: 2345455,
-  },
-  {
-    name: 'video',
-    date: '2023-02-23 12:34:22',
-    size: 2345455,
-  },
-])
+getFolderChildren()
 
 </script>
 
@@ -100,9 +88,11 @@ const tableData = ref([
   height: calc(100% + 1px);
 }
 
-/* 更改表头和表格行的文字颜色 */
-/* ::v-deep .el-table__header th,
-::v-deep .el-table__body td {
-  color: #303133; 
-} */
+a {
+  cursor: pointer;
+}
+
+a:hover {
+  
+}
 </style>

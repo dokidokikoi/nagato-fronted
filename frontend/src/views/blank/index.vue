@@ -1,8 +1,8 @@
 <template>
   <div class="parent">
     <ul v-infinite-scroll="load" class="infinite-list fill" style="overflow: auto">
-      <li v-for="i in count" :key="i" class="infinite-list-item" @click="toRoute('/blank/view')">
-        <router-link to="/blank/view">{{i}}</router-link>
+      <li v-for="item in blanks" :key="item.id" class="infinite-list-item" @click="toRoute('/blank/view/'+item.id)">
+        <router-link :to="'/blank/view/'+item.id">{{item.title}}</router-link>
       </li>
     </ul>
   </div>
@@ -12,13 +12,30 @@
 <script setup>
 import { ref } from 'vue'
 import router from '@/router/router.js';
-const count = ref(20)
+import { BlankList } from '@@/go/main/App'
+import { ElNotification } from "element-plus"
+
+const blanks = ref(null)
+
 const load = () => {
-  count.value += 5
 }
 function toRoute(path) {
   router.push({path: path})
 }
+function blankList() {
+  BlankList().then(res => {
+    if (res.code !== 200) {
+        ElNotification({
+            title: res.msg,
+            type: "error"
+        })
+        return
+    }
+    blanks.value = res.data
+  })
+}
+
+blankList()
 </script>
 
 

@@ -22,14 +22,7 @@
 import { ref } from "vue"
 const emit = defineEmits(['saveEvent'])
 
-let text = ref(
-'## test \n' +
-'```go \n' +
-'fmt.Println("test") \n' + 
-'```\n' +
-'![golang](https://www.freecodecamp.org/news/content/images/2021/10/golang.png)\n' +
-'![golang](https://www.freecodecamp.org/news/content/images/2021/10/golang.png)'
-)
+let text = ref("")
 
 let dialogImageVisible = ref(false)
 let dialogImages = ref([])
@@ -62,6 +55,14 @@ function imageFocus(images, currentIndex) {
   dialogImages.value = images
   dialogImageIndex = currentIndex
 }
+
+function getText() {
+  return text.value
+}
+
+defineExpose({
+  getText
+})
 </script>
 
 

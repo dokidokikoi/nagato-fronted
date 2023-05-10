@@ -19,47 +19,7 @@
 <script setup>
 import { onMounted, ref, getCurrentInstance } from "vue"
 
-let text = ref(`
-# heading 1
-contentcontentcontent
-contentcontentcontent
-contentcontentcontent
-contentcontentcontent
-contentcontentcontent
-
-## heading 2
-contentcontentcontent
-contentcontentcontent
-contentcontentcontent
-contentcontentcontent
-contentcontentcontent
-![golang](https://www.freecodecamp.org/news/content/images/2021/10/golang.png){{{width="100" height="auto"}}}
-
-\`\`\`go
-fmt.Println("hello")
-\`\`\`
-
-### heading 3
-contentcontentcontent
-contentcontentcontent
-contentcontentcontent
-contentcontentcontent
-contentcontentcontent
-
-## heading 2
-contentcontentcontent
-contentcontentcontent
-contentcontentcontent
-contentcontentcontent
-contentcontentcontent
-
-### heading 3
-contentcontentcontent
-contentcontentcontent
-contentcontentcontent
-contentcontentcontent
-contentcontentcontent
-`)
+defineProps(["text"])
 
 let dialogImageVisible = ref(false)
 let dialogImages = ref([])

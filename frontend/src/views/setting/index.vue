@@ -24,7 +24,7 @@
 
 
 <script setup>
-import { ref, watch } from 'vue';
+import { ref } from 'vue';
 
 const props = defineProps({settingVisable: Boolean})
 const settingVisable = ref(false) 

@@ -3,13 +3,16 @@
     v-model="dialogVisible"
     title="Upload File"
     width="50%"
-    :before-close="handleClose"
+    destroy-on-close
   >
-    <el-upload
-      class="upload-demo"
+    <SelectDir ref="selectDirRef" />
+    <el-input id="upload" type="text" v-model="filePath" />
+    <!-- <el-upload
+      class="upload-file"
       drag
       action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15"
       multiple
+      :before-upload="beforeUpload"
     >
       <el-icon class="el-icon--upload"><upload-filled /></el-icon>
       <div class="el-upload__text">
@@ -20,42 +23,45 @@
           jpg/png files with a size less than 500kb
         </div>
       </template>
-    </el-upload>
-
-    <el-upload
-    v-model:file-list="fileList"
-    class="upload-demo"
-    action="https://run.mocky.io/v3/9d059bf9-4660-45f2-925d-ce80ad6c4d15"
-    :on-change="handleChange"
-  >
-    <el-button type="primary">Click to upload</el-button>
-    <template #tip>
-      <div class="el-upload__tip">
-        jpg/png files with a size less than 500kb
-      </div>
-    </template>
-  </el-upload>
+    </el-upload> -->
     <template #footer>
       <span class="dialog-footer">
         <el-button @click="dialogVisible = false">Cancel</el-button>
-        <el-button type="primary" @click="dialogVisible = false">
+        <el-button type="primary" @click="upload">
           Confirm
         </el-button>
       </span>
     </template>
   </el-dialog>
-  <input type="file" />
 </template>
 
 
 <script setup>
+import SelectDir from "../../../components/SelectDir.vue"
 import { UploadFilled } from '@element-plus/icons-vue'
+import { Upload } from '@@/go/main/App'
 import { ref } from 'vue';
+import { ElNotification } from "element-plus"
 
 const dialogVisible = ref(false)
+const filePath = ref("")
+const selectDirRef = ref(null)
 
 function showDialog() {
   dialogVisible.value = true
+}
+
+function upload() {
+  Upload(filePath.value, selectDirRef.value.getUUID()).then(res => {
+    if (res.code !== 200) {
+        ElNotification({
+            title: res.msg,
+            type: "error"
+        })
+        return
+    }
+  })
+  dialogVisible.value = false;
 }
 
 defineExpose({

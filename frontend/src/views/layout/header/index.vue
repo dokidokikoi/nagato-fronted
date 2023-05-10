@@ -11,6 +11,8 @@
             width="3000"
             placeholder="搜索"
             :prefix-icon="Search"
+            @focus="showSearch"
+            ref="searchInputRef"
           />
         </div>
         <!-- <el-button class="btn" link @click.stop>下载</el-button> -->
@@ -25,22 +27,30 @@
   </div>
 
   <Setting ref="settingRef" :setting-visable="settingVisable" />
+  <SearchDialog ref="searchRef" />
 </template>
 
 
 <script setup>
 import Icon from "../../../components/Icon.vue"
 import Setting from "../../setting/index.vue"
+import SearchDialog from "../../search/index.vue"
 import router from '@/router/router.js';
 import { Search } from '@element-plus/icons-vue'
 import { ref } from "vue";
 
 let search = ref("")
 const settingRef = ref(null);
+const searchRef = ref(null)
+const searchInputRef = ref(null)
 
 function showSetting() {
-  console.log(settingRef.value)
   settingRef.value.showSetting()
+}
+
+function showSearch() {
+  searchRef.value.showDialog()
+  searchInputRef.value.blur()
 }
 
 function toRoute(path) {

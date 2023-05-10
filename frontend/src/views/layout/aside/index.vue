@@ -1,10 +1,10 @@
 <template>
   <div class="me">
     <!-- <el-avatar src="../../../assets/images/avatar.png" /> -->
-    <div class="avatar">
+    <div class="avatar" @click="toRoute('/me')">
       <img src="../../../assets/images/avatar.png" style="object-fit: 100%;" alt="">
     </div>
-    <span class="name">
+    <span class="name" @click="toRoute('/me')"> 
       <span>nagato</span> <Icon name="arrow-right" />
     </span>
   </div>
@@ -47,6 +47,11 @@ import {
   Reading,
   Share
 } from '@element-plus/icons-vue'
+import router from "@/router/router.js"
+
+function toRoute(path) {
+  router.push({path: path})
+}
 </script>
 
 
@@ -72,6 +77,10 @@ import {
 .avatar img {
   width: inherit;
   height: inherit;
+}
+
+.avatar, .name:hover {
+  cursor: pointer;
 }
 
 .name {
